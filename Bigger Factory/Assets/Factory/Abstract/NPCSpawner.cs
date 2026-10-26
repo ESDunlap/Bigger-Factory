@@ -15,12 +15,16 @@ public class NPCSpawner : MonoBehaviour
         }
     }
 
-    public void SpawnBeggar()
+    /*public void SpawnBeggar()
     {
         NPCRequirements _Requirements;
         _Requirements = new NPCRequirements();
         _Requirements.Friendly = true;
         _Requirements.RichLevel = Richness.Low;
+        if (Random.Range(0, 2) == 0)
+            _Requirements.SpawnArea = SpawnLocation.Grass;
+        else
+            _Requirements.SpawnArea = SpawnLocation.Desert;
         INPC m_Beggar = GetNPC(_Requirements);
         m_Beggar.Spawn();
         allVillagers.Add(m_Beggar);
@@ -79,7 +83,7 @@ public class NPCSpawner : MonoBehaviour
         INPC m_Goblin = GetNPC(_Requirements);
         m_Goblin.Spawn();
         allVillagers.Add(m_Goblin);
-    }
+    }*/
 
     public void SpawnRequest(NPCRequirements _Requirements)
     {

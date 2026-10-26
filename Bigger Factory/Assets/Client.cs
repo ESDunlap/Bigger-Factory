@@ -8,7 +8,7 @@ public class Client : MonoBehaviour
     public NPCSpawner m_SpawnerNPC;
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        /*if (Input.GetKeyDown(KeyCode.I))
         {
             m_SpawnerNPC.SpawnBeggar();
         }
@@ -31,7 +31,7 @@ public class Client : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             m_SpawnerNPC.SpawnDragon();
-        }
+        }*/
     }
 
     void OnGUI()
@@ -45,13 +45,24 @@ public class Client : MonoBehaviour
         }
         if (GUI.Button(new Rect(10, 30, 150, 20), "Change Hostility"))
         {
-            currentRequest.Friendly = !currentRequest.Friendly;
+            if (currentRequest.Friendliness == Friendly.Hostile)
+                currentRequest.Friendliness = Friendly.Friendly;
+            else
+                currentRequest.Friendliness = (currentRequest.Friendliness + 1);
         }
-        if (GUI.Button(new Rect(10, 50, 150, 20), "Spawn NPC"))
+        if (GUI.Button(new Rect(10, 50, 150, 20), "Change Location"))
+        {
+            if(currentRequest.SpawnArea == SpawnLocation.Grass)
+                currentRequest.SpawnArea = SpawnLocation.Desert;
+            else
+                currentRequest.SpawnArea = SpawnLocation.Grass;
+        }
+        if (GUI.Button(new Rect(10, 70, 150, 20), "Spawn NPC"))
         {
             m_SpawnerNPC.SpawnRequest(currentRequest);
         }
         GUI.Label(new Rect(200, 10, 150, 20), "Wealth: " + currentRequest.RichLevel);
-        GUI.Label(new Rect(200, 30, 150, 20), "Friendly: " + currentRequest.Friendly);
+        GUI.Label(new Rect(200, 30, 150, 20), "Friendly: " + currentRequest.Friendliness);
+        GUI.Label(new Rect(200, 50, 150, 20), "Spawn Location: " + currentRequest.SpawnArea);
     }
 }

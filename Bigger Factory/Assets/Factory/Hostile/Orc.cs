@@ -7,6 +7,10 @@ using static UnityEngine.UI.ScrollRect;
 public class Orc : MonoBehaviour, INPC, Medium
 {
     [SerializeField] private float pauseTime = 3f;
+    private float maxX = 60f;
+    private float maxZ = 20f;
+    private float minX = -20f;
+    private float minZ = -20f;
     private Vector3 startLocation;
     private Vector3 endLocation;
     private float movementTime = 0;
@@ -17,9 +21,9 @@ public class Orc : MonoBehaviour, INPC, Medium
     public void Spawn()
     {
         startLocation = transform.position;
-        endLocation = new Vector3(Random.Range(-10.0f, 10.0f),
+        endLocation = new Vector3(Random.Range(minX, maxX),
             transform.position.y,
-            Random.Range(-10.0f, 10.0f));
+            Random.Range(minZ, maxZ));
         totalDistance = Vector3.Distance(startLocation, endLocation);
     }
     public void Speak()
@@ -36,9 +40,9 @@ public class Orc : MonoBehaviour, INPC, Medium
                 reachedEnd = false;
                 stopTimer = 0;
                 startLocation = transform.position;
-                endLocation = new Vector3(Random.Range(-10.0f, 10.0f),
+                endLocation = new Vector3(Random.Range(minX, maxX),
                     transform.position.y,
-                    Random.Range(-10.0f, 10.0f));
+                    Random.Range(minZ, maxZ));
                 totalDistance = Vector3.Distance(startLocation, endLocation);
             }
         }

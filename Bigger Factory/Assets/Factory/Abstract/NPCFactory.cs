@@ -7,13 +7,17 @@ public class NPCFactory : AbstractNPCFactory
 
     public NPCFactory(NPCRequirements requirements)
     {
-        if (requirements.Friendly)
+        if (requirements.Friendliness == Friendly.Friendly)
         {
             _factory = new FriendlyFactory();
         }
+        else if (requirements.Friendliness == Friendly.Neutral)
+        {
+            _factory = new NeutralFactory();
+        }
         else
         {
-            _factory= new HostileFactory();
+            _factory = new HostileFactory();
         }
             _requirements = requirements;
     }

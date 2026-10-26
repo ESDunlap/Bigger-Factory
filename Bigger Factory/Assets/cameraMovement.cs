@@ -9,7 +9,6 @@ public class cameraMovement : MonoBehaviour
     {
         rotX += Input.GetAxis("Mouse X") * 3f;
         rotY += Input.GetAxis("Mouse Y") * 1f;
-        transform.rotation = Quaternion.Euler(-rotY, rotX, 0);
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         float y = 0;
@@ -20,6 +19,9 @@ public class cameraMovement : MonoBehaviour
         Vector3 dir = transform.right * x + transform.up * y + transform.forward * z;
         transform.position += dir * 5f * Time.deltaTime;
 
-        transform.Rotate(Input.GetAxis("Mouse Y")*Time.deltaTime * 50f, Input.GetAxis("Mouse X") * Time.deltaTime * 50f, 0);
+        if (Input.GetMouseButton(1))
+        {
+            transform.rotation = Quaternion.Euler(-rotY, rotX, 0);
+        }
     }
 }

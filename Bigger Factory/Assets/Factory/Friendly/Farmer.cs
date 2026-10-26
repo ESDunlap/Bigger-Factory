@@ -14,8 +14,8 @@ public class Farmer : MonoBehaviour, INPC, Medium
     {
         startLocation = transform.position;
         endLocation = new Vector3(Random.Range(-10.0f, 10.0f),
-            transform.position.y,
-            Random.Range(-10.0f, 10.0f));
+            0,
+            Random.Range(-10.0f, 10.0f)) + startLocation;
         totalDistance = Vector3.Distance(startLocation, endLocation);
         Debug.Log("I LIVE!");
     }

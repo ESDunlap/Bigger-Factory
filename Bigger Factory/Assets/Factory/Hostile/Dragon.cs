@@ -3,7 +3,6 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Dragon : MonoBehaviour, INPC
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Spawn()
     {
 
